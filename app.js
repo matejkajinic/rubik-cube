@@ -94,65 +94,81 @@ const RubiksCube = () => {
   };
 
   return (
-    <div className="rubiks-cube-container">
-      <style>{`
-        .rubiks-cube-container {
-          perspective: 1000px;
-          width: 300px;
-          height: 300px;
-          margin: 50px auto;
-        }
-        .rubiks-cube {
-          width: 100%;
-          height: 100%;
-          position: relative;
-          transform-style: preserve-3d;
-          transition: transform 0.5s;
-        }
-        .cube-piece {
-          position: absolute;
-          width: 50px;
-          height: 50px;
-          transition: transform 0.5s;
-          transform-style: preserve-3d;
-        }
-        .face {
-          position: absolute;
-          width: 48px;
-          height: 48px;
-          border: 1px solid black;
-          opacity: 0.9;
-        }
-        .face-0 { transform: rotateX(90deg) translateZ(25px); }
-        .face-1 { transform: rotateY(90deg) translateZ(25px); }
-        .face-2 { transform: translateZ(25px); }
-        .face-3 { transform: rotateY(-90deg) translateZ(25px); }
-        .face-4 { transform: rotateY(180deg) translateZ(25px); }
-        .face-5 { transform: rotateX(-90deg) translateZ(25px); }
-        .controls {
-          margin-top: 20px;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 10px;
-        }
-        button {
-          padding: 5px 10px;
-          background-color: #f0f0f0;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-        button:hover {
-          background-color: #e0e0e0;
-        }
-      `}</style>
-      <div className="rubiks-cube" style={{
-        transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) rotateZ(${rotation.z}deg)`
-      }}>
-        {cubeState.map((piece, index) => (
-          <CubePiece key={index} position={piece.position.map(p => p * 55)} colors={piece.colors} />
-        ))}
+    <div className="app-container">
+      <div className="rubiks-cube-container">
+        <style>{`
+          body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+          }
+          .app-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding-top: 20vh;
+            box-sizing: border-box;
+          }
+          .rubiks-cube-container {
+            perspective: 1000px;
+            width: 300px;
+            height: 300px;
+          }
+          .rubiks-cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+          }
+          .cube-piece {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+          }
+          .face {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border: 1px solid black;
+            opacity: 0.9;
+          }
+          .face-0 { transform: rotateX(90deg) translateZ(25px); }
+          .face-1 { transform: rotateY(90deg) translateZ(25px); }
+          .face-2 { transform: translateZ(25px); }
+          .face-3 { transform: rotateY(-90deg) translateZ(25px); }
+          .face-4 { transform: rotateY(180deg) translateZ(25px); }
+          .face-5 { transform: rotateX(-90deg) translateZ(25px); }
+          .controls {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+          }
+          button {
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+          button:hover {
+            background-color: #e0e0e0;
+          }
+        `}</style>
+        <div className="rubiks-cube" style={{
+          transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) rotateZ(${rotation.z}deg)`
+        }}>
+          {cubeState.map((piece, index) => (
+            <CubePiece key={index} position={piece.position.map(p => p * 55)} colors={piece.colors} />
+          ))}
+        </div>
       </div>
       <div className="controls">
         {['U', 'D', 'F', 'B', 'L', 'R'].map(face => (
