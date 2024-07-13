@@ -19,12 +19,12 @@ const RubiksCube = () => {
           initialState.push({
             position: [x, y, z],
             colors: [
-              y === -1 ? COLORS[0] : COLORS[5], // Up (white) or Down (yellow)
-              x === 1 ? COLORS[1] : COLORS[3],  // Right (red) or Left (orange)
-              z === -1 ? COLORS[2] : COLORS[4], // Front (blue) or Back (green)
-              x === -1 ? COLORS[3] : COLORS[1], // Left (orange) or Right (red)
-              z === 1 ? COLORS[4] : COLORS[2],  // Back (green) or Front (blue)
-              y === 1 ? COLORS[5] : COLORS[0],  // Down (yellow) or Up (white)
+              y === -1 ? COLORS[0] : COLORS[5],
+              x === 1 ? COLORS[1] : COLORS[3],
+              z === -1 ? COLORS[2] : COLORS[4],
+              x === -1 ? COLORS[3] : COLORS[1],
+              z === 1 ? COLORS[4] : COLORS[2],
+              y === 1 ? COLORS[5] : COLORS[0],
             ]
           });
         }
